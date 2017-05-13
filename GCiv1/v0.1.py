@@ -72,6 +72,16 @@ while True:
     elif pressed_keys[K_DOWN]:
         key_direction.y = +1
         sprite = pygame.image.load(sprite_image_filename_bas).convert_alpha()
+    #brodures
+    if sprite_pos.x < 10:
+        sprite_pos.x = sprite_pos.x+10
+    if sprite_pos.x > 970:
+        sprite_pos.x = sprite_pos.x-10
+    if sprite_pos.y > 620:
+        sprite_pos.y = sprite_pos.y-10
+    if sprite_pos.y < 10:
+        sprite_pos.y = sprite_pos.y+10
+
 
     key_direction.normalize()
 
