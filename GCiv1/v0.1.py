@@ -2,7 +2,10 @@
 
 #chemin des images
 background_image_filename = 'background/paris_carte_wow.jpg'
-sprite_image_filename = 'Sprites/Indiana.png'
+sprite_image_filename_haut = 'Sprites/indiana_haut.png'
+sprite_image_filename_bas = 'Sprites/indiana_bas.png'
+sprite_image_filename_droite = 'Sprites/indiana_droite.png'
+sprite_image_filename_gauche = 'Sprites/indiana_gauche.png'
 goal_image_filename = 'Sprites/pommier.png'
 win_image_filename = 'image/win.jpg'
 
@@ -21,7 +24,7 @@ pygame.display.set_caption("Gciv1")
 
 #chargement des images
 background = pygame.image.load(background_image_filename).convert()
-sprite = pygame.image.load(sprite_image_filename).convert_alpha()
+sprite = pygame.image.load(sprite_image_filename_bas).convert_alpha()
 goal = pygame.image.load(goal_image_filename).convert_alpha()
 win = pygame.image.load(win_image_filename).convert()
 
@@ -53,18 +56,22 @@ while True:
             pygame.time.wait(2000)
             exit()
 
-    #mouvement Héros
+    #mouvement Héros et rotation du sprite
     pressed_keys = pygame.key.get_pressed()
 
     key_direction = Vector2(0, 0)
     if pressed_keys[K_LEFT]:
         key_direction.x = -1
+        sprite = pygame.image.load(sprite_image_filename_gauche).convert_alpha()
     elif pressed_keys[K_RIGHT]:
         key_direction.x = +1
+        sprite = pygame.image.load(sprite_image_filename_droite).convert_alpha()
     if pressed_keys[K_UP]:
         key_direction.y = -1
+        sprite = pygame.image.load(sprite_image_filename_haut).convert_alpha()
     elif pressed_keys[K_DOWN]:
         key_direction.y = +1
+        sprite = pygame.image.load(sprite_image_filename_bas).convert_alpha()
 
     key_direction.normalize()
 
